@@ -396,15 +396,17 @@
                 <h4>Call:</h4>
                 <p>+91 99817 98611</p>
               </div>
-              
+              <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d929.7196301329177!2d81.3612642695033!3d21.236665248812777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDE0JzEyLjAiTiA4McKwMjEnNDIuOSJF!5e0!3m2!1sen!2sin!4v1711036710785!5m2!1sen!2sin"  frameborder="0" style="border:0; width: 100%; height: 350px;" allowfullscreen></iframe>
               <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d781.6307948418346!2d81.58742446332576!3d21.268157733625042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28e0a7276f4ffd%3A0xc8e0c89d23124bc3!2sLIG-100%2C%20Kabir%20Nagar%2C%20Raipur%2C%20Chhattisgarh%20492099!5e0!3m2!1sen!2sin!4v1703791914793!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
             </div>
 
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d929.7196301329177!2d81.3612642695033!3d21.236665248812777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDE0JzEyLjAiTiA4McKwMjEnNDIuOSJF!5e0!3m2!1sen!2sin!4v1711036710785!5m2!1sen!2sin"  frameborder="0" style="border:0; width: 100%; height: 350px;" allowfullscreen></iframe>
-            <!-- <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            
+         
+         
+            <form autocomplete="off" method="post" name="google-sheet" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -413,6 +415,10 @@
                 <div class="form-group col-md-6">
                   <label for="name">Your Email</label>
                   <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Phone Number</label>
+                  <input type="tel" class="form-control" name="phoneNumber" id="" required>
                 </div>
               </div>
               <div class="form-group">
@@ -423,21 +429,34 @@
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="4" required></textarea>
               </div>
-              <div class="my-3">
+              <!-- <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form> -->
+              </div> -->
+              <div class="text-center"><button type="submit" name="submit" >Send Message</button></div>
+            </form>
           </div>
 
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyctKT_YlJBLAwYxJ6BsSkFdvIZPu5zL8JAyvd27uu7OV4paW781TQkkUU_zxlydFio5w/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    </section>
+    <!-- End Contact Section -->
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -470,7 +489,18 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <!-- Contact us main js file -->
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyctKT_YlJBLAwYxJ6BsSkFdvIZPu5zL8JAyvd27uu7OV4paW781TQkkUU_zxlydFio5w/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 
 </html>
